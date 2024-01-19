@@ -25,7 +25,7 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
 
 
 @router.message(Command("help"))
-async def command_help_handler(message: Message, state: FSMContext, language: str) -> None:
+async def command_help_handler(message: Message, state: FSMContext) -> None:
     function_name = "main_menu_handler"
     set_func_and_person(function_name, tag, message)
 

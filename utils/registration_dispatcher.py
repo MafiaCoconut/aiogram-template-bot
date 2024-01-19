@@ -1,9 +1,6 @@
 from aiogram import Dispatcher, F
 
-# from handlers.callback import
-# from handlers.admin.commands import logs, users, stadburo, canteens, mailing, users_processing
-# from middlewares.languages import SomeMiddleware
-
+from handlers import bot_messages, user_commands
 
 dp = Dispatcher()
 # dp.message.middleware(SomeMiddleware())
@@ -12,12 +9,8 @@ dp = Dispatcher()
 
 def include_routers():
     dp.include_routers(
-        # main_menu_callback.router,
-        # user_commands.router,
-        # admin_commands.router,
-        # bot_messages.router,
-
-
+        user_commands.router,
+        bot_messages.router,
     )
 
 
