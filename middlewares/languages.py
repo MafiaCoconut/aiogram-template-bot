@@ -2,8 +2,6 @@ from typing import Callable, Dict, Any, Awaitable
 from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 
-from models.sqlite.persons_sqlite import PersonSQLite
-
 
 class SomeMiddleware(BaseMiddleware):
     async def __call__(
@@ -12,17 +10,11 @@ class SomeMiddleware(BaseMiddleware):
         event: TelegramObject,
         data: Dict[str, Any]
     ) -> Any:
-        # print("Before handler")
-        try:
-            user_id = data["event_from_user"].id
-            person_sqlite = PersonSQLite()
-            language = person_sqlite.get_language(user_id)
 
-            data['language'] = language
-        except Exception as e:
-            data['language'] = 'en'
+        # print("Before handler")
 
         result = await handler(event, data)
 
         # print("After handler")
+
         return result

@@ -22,6 +22,7 @@ def include_routers():
 
 
 def register_all_callbacks():
+    pass
     # # Help меню админа
     # register_admin_help_menu()
     #
@@ -85,48 +86,3 @@ def register_all_callbacks():
     # dp.callback_query.register(user_commands.send_main_menu_from_mailing_handler, F.data == 'send_menu_main')
 
 
-def register_admin_help_menu():
-    # Пользователи
-    # dp.callback_query.register(users.admin_menu_users, F.data == 'admin_menu_users')
-    # dp.callback_query.register(users.admin_get_all_persons_handler, F.data == 'admin_get_all_persons')
-    # dp.callback_query.register(users.admin_get_username_time_created_handler,
-    #                            F.data == 'admin_get_username_time_created')
-    # dp.callback_query.register(users.admin_get_id_username_time_handler, F.data == 'admin_get_id_username_time')
-    # dp.callback_query.register(users.admin_change_persons_parameters_handler,
-    #                            F.data == 'admin_change_persons_parameters')
-    # dp.callback_query.register(users.admin_get_person_by_id_handler, F.data == 'admin_get_person_by_id')
-    # dp.callback_query.register(users.admin_delete_person_handler, F.data == 'admin_delete_person')
-    # dp.callback_query.register(users_processing.admin_delete_person_decision_handler,
-    #                            F.data.startswith('admin_delete_person_'))
-    # dp.callback_query.register(users.admin_change_persons_mailing_time_handler,
-    #                            F.data == 'admin_change_person_mailing_time')
-    #
-    # # Столовые
-    # dp.callback_query.register(canteens.admin_menu_canteens, F.data == 'admin_menu_canteens')
-    # dp.callback_query.register(canteens.admin_start_canteens_parser, F.data.startswith('admin_start_canteen'))
-    # dp.callback_query.register(canteens.admin_get_canteens_menu, F.data.startswith('admin_get_canteen'))
-    #
-    # # Stadburo
-    # dp.callback_query.register(stadburo.admin_menu_stadburo, F.data == 'admin_menu_stadburo')
-    # dp.callback_query.register(stadburo.admin_start_termins_parser_handler, F.data == 'admin_start_termins_parser')
-    #
-    # # логи
-    # dp.callback_query.register(logs.admin_menu_logs, F.data == 'admin_menu_logs')
-    # dp.callback_query.register(logs.admin_send_logs_handler, F.data == 'admin_send_logs')
-    # dp.callback_query.register(logs.admin_clear_logs_handler, F.data == 'admin_clear_logs')
-    #
-    # # Рассылка
-    # dp.callback_query.register(mailing.admin_menu_mailing, F.data == 'admin_menu_mailing')
-    # dp.callback_query.register(mailing.admin_menu_send_msg4all, F.data == 'admin_menu_send_msg4all')
-    # dp.callback_query.register(mailing.admin_get_all_mailing_handler, F.data == 'admin_get_all_mailing')
-    # dp.callback_query.register(mailing.admin_delete_mailing_handler, F.data == 'admin_delete_mailing')
-    #
-    # # Отправка сообщения всем
-    # dp.callback_query.register(mailing.admin_send_msg4all_change_text, F.data == 'admin_msg4all_change_text')
-    # dp.callback_query.register(mailing.admin_send_msg4all_change_time, F.data == 'admin_msg4all_change_time')
-    # dp.callback_query.register(mailing.admin_send_msg4all_ready_to_send, F.data == 'admin_msg4all_ready_to_send')
-    # dp.callback_query.register(mailing.admin_send_msg4all_send, F.data == 'admin_msg4all_send')
-    #
-    # # Открыть главное меню
-    # dp.callback_query.register(admin_commands.admin_menu_help_callback,
-    #                            F.data == 'admin_menu_help', IsAdminCallback())
