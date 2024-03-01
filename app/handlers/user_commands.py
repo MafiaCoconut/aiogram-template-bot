@@ -1,10 +1,11 @@
 import logging
 
-from aiogram import Router
+from aiogram import Router, F
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, CallbackQuery, FSInputFile
 from aiogram.fsm.context import FSMContext
 
+from filters.is_admin import IsAdmin
 from utils.logs import set_func, set_func_and_person
 from utils.bot import bot
 
@@ -38,4 +39,22 @@ async def command_send_voice_handler(message: Message, state: FSMContext) -> Non
     await bot.send_voice(chat_id=message.chat.id, voice=voice, caption='caption')
 
 
+@router.message(F.text == '/send_user_logs', IsAdmin())
+async def admin_send_user_logs_with_command(message: Message):
+    function_name = "admin_send_user_logs_with_command"
+    set_func(function_name, tag)
+
+    text = "Пользовательские логи отправлены"
+
+    await message.answer_document(text=text, document=FSInputFile(path='user_data.log'))
+
+
+@router.message(F.text == '/send_system_logs', IsAdmin())
+async def admin_send_system_logs_with_command(message: Message):
+    function_name = "admin_send_system_logs_with_command"
+    set_func(function_name, tag)
+
+    text = "Логи отправлены"
+
+    await message.answer_document(text=text, document=FSInputFile(path='system_data.log'))
 
