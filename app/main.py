@@ -1,12 +1,8 @@
 import asyncio
 
 from utils import commands, registration_dispatcher
-
-from config.config import get_token
-from config import settings
 from utils.bot import bot
-
-TOKEN = get_token()
+from utils.logs import logs_settings
 
 
 async def main() -> None:
@@ -17,5 +13,5 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    settings.main()
+    logs_settings()
     asyncio.run(main())

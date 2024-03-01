@@ -166,3 +166,5 @@ data/main.sqlite
 config/settings.py
 test.py
 geckodriver.exe
+system_data.log
+user_data.log

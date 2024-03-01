@@ -1,7 +1,7 @@
 from aiogram import Router, types, F
 from aiogram.types import Message
 
-from config.log_def import set_inside_func, send_log
+from utils.logs import set_func, set_func_and_person
 from handlers import auxiliary
 from keyboards import reply, inline
 

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from config.config import get_admin_id
+from utils.logs import set_func, set_func_and_person
 from aiogram.types import CallbackQuery
 from utils.bot import bot
 
