@@ -1,5 +1,9 @@
 FROM python:3.11
 
+ENV VIRTUAL_ENV "/venv"
+RUN python -m venv $VIRTUAL_ENV
+ENV PATH "$VIRTUAL_ENV/bin:$PATH"
+
 WORKDIR /app
 
 COPY ../requirements.txt .
@@ -12,7 +16,6 @@ RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/* \
     libpq-dev \
     gcc \
 RUN pip install -r requirements.txt
-RUN pip install psycopg2-binary==2.9.9
 
 COPY ../app .
 
