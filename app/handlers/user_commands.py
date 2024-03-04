@@ -17,7 +17,7 @@ status = "debug"
 @router.message(CommandStart())
 async def command_start_handler(message: Message, state: FSMContext) -> None:
     function_name = "command_start_handler"
-    set_func(function_name, tag, status)
+    set_func_and_person(function_name, tag, message, status)
 
     await message.answer("Добро пожаловать!")
 
