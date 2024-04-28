@@ -30,16 +30,16 @@ async def command_help_handler(message: Message, state: FSMContext) -> None:
     await message.answer("Вывод help информации")
 
 
-@router.message(Command("send_voice"))
-async def command_send_voice_handler(message: Message, state: FSMContext) -> None:
-    function_name = "command_send_voice_handler"
-    set_func_and_person(function_name, tag, message)
+# @router.message(Command("send_voice"))
+# async def command_send_voice_handler(message: Message, state: FSMContext) -> None:
+#     function_name = "command_send_voice_handler"
+#     set_func_and_person(function_name, tag, message)
+#
+#     voice = FSInputFile("path_to_file.ogg")
+#     await bot.send_voice(chat_id=message.chat.id, voice=voice, caption='caption')
 
-    voice = FSInputFile("path_to_file.ogg")
-    await bot.send_voice(chat_id=message.chat.id, voice=voice, caption='caption')
 
-
-@router.message(F.text == '/send_user_logs', IsAdmin())
+@router.message(Command('get_user_logs'), IsAdmin())
 async def admin_send_user_logs_with_command(message: Message):
     function_name = "admin_send_user_logs_with_command"
     set_func(function_name, tag)
@@ -49,7 +49,7 @@ async def admin_send_user_logs_with_command(message: Message):
     await message.answer_document(text=text, document=FSInputFile(path='data/logs/user_data.log'))
 
 
-@router.message(F.text == '/send_system_logs', IsAdmin())
+@router.message(Command('get_system_logs'), IsAdmin())
 async def admin_send_system_logs_with_command(message: Message):
     function_name = "admin_send_system_logs_with_command"
     set_func(function_name, tag)
