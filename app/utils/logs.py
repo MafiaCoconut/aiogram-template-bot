@@ -1,10 +1,12 @@
 import logging
 from dotenv import load_dotenv
 import os
+from aiogram.types import Update
 
 load_dotenv()
 system_logger = logging.getLogger('system_logging')
 user_logger = logging.getLogger('user_logging')
+error_logger = logging.getLogger("error_logging")
 
 
 def set_func(function: str, tag: str, status: str = "info"):
@@ -47,6 +49,14 @@ def add_or_delete_user(message, command):
     user_logger.info(result)
 
 
+async def error_aio_handler(update: Update):
+    """
+    Функция для обработки и логирования всех необработанных исключений.
+    """
+    error_logger.error(update.exception)
+    system_logger.error(update.exception)
+
+
 def logs_settings():
     # Максимально подробный вывод логов
     # formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(module)s - %(funcName)s - %(message)s')
@@ -55,11 +65,14 @@ def logs_settings():
     formatter = logging.Formatter(fmt='[%(levelname)s] %(asctime)s - %(message)s', datefmt='%d.%m-%H:%M')
 
     # Настройка вывода данных в файлы
-    system_handler = logging.FileHandler('system_data.log')
+    system_handler = logging.FileHandler('storage/logs/system_data.log')
     system_handler.setFormatter(formatter)
 
-    user_handler = logging.FileHandler('user_data.log')
+    user_handler = logging.FileHandler('storage/logs/user_data.log')
     user_handler.setFormatter(formatter)
+
+    error_handler = logging.FileHandler("storage/logs/error_data.log")
+    error_handler.setFormatter(formatter)
 
     global system_logger
     if os.getenv("DEVICE") == "Laptop":
@@ -83,3 +96,10 @@ def logs_settings():
     global user_logger
     user_logger.setLevel(logging.DEBUG)
     user_logger.addHandler(user_handler)
+
+    global error_logger
+    error_logger.setLevel(logging.ERROR)
+    error_logger.addHandler(error_handler)
+
+    from utils.registration_dispatcher import dp
+    dp.errors.register(error_aio_handler)
