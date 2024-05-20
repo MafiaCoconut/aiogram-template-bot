@@ -1,10 +1,17 @@
 from aiogram import Dispatcher, F
 
 from handlers import bot_messages, user_commands
+from middlewares.set_logs import SetLogMiddleware
 
 dp = Dispatcher()
 # dp.message.middleware(SomeMiddleware())
 # dp.callback_query.outer_middleware(SomeMiddleware())
+
+
+def register_all_in_dispatcher():
+    include_routers()
+    include_middlewares()
+    register_all_callbacks()
 
 
 def include_routers():
@@ -78,4 +85,17 @@ def register_all_callbacks():
     # # Выводить меню после рассылки
     # dp.callback_query.register(user_commands.send_main_menu_from_mailing_handler, F.data == 'send_menu_main')
 
+
+def include_middlewares():
+    """
+    text
+
+    :param type val:
+
+
+    :return:
+    :rtype:
+    """
+    dp.message.middleware(SetLogMiddleware())
+    dp.callback_query.middleware(SetLogMiddleware())
 

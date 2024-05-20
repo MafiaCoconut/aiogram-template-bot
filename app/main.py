@@ -6,7 +6,7 @@ from utils.logs import logs_settings
 
 
 async def main() -> None:
-    registration_dispatcher.include_routers()
+    registration_dispatcher.register_all_in_dispatcher()
 
     await commands.set_commands(bot)
     await registration_dispatcher.dp.start_polling(bot)

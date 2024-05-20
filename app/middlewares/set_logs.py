@@ -1,9 +1,6 @@
 from aiogram import BaseMiddleware
 from typing import Callable, Dict, Any, Awaitable
 from aiogram.types import TelegramObject, Message, CallbackQuery
-from aiogram.dispatcher.event.handler import HandlerObject
-from db.postgresql_handlers.users_db_handler import user_is_exists
-from icecream import ic
 
 from utils.logs import set_func, set_func_and_person
 
